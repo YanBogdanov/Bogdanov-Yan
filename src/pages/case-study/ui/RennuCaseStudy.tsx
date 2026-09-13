@@ -59,14 +59,11 @@ export function RennuCaseStudy() {
           ))}
         </div>
 
-        <div className="case-study__section">
-          <CaseStudyImage
-            alt=""
-            className="case-study__section-photo"
-            src={withBase('/case-studies/rennu/images/texture-pink.png')}
-          />
-          <CaseStudyImage alt="Rennu" className="case-study__logo" src={withBase('/case-studies/rennu/images/logo-rennu.svg')} />
-        </div>
+        <CaseStudyImage
+          alt="Rennu"
+          className="case-study__section-image"
+          src={withBase('/case-studies/rennu/images/logo-banner.png')}
+        />
 
         <CaseStudyImage
           alt=""
@@ -108,13 +105,12 @@ export function RennuCaseStudy() {
           />
         </div>
 
-        <div className="case-study__section case-study__section--export" data-header-invert="true">
+        <div data-header-invert="true">
           <CaseStudyImage
-            alt=""
-            className="case-study__section-photo"
-            src={withBase('/case-studies/rennu/images/texture-green.png')}
+            alt={t('common.export')}
+            className="case-study__section-image"
+            src={withBase('/case-studies/rennu/images/export-banner.png')}
           />
-          <CaseStudyImage alt={t('common.export')} className="case-study__component case-study__component--button-export" src={withBase('/case-studies/rennu/images/button-export.svg')} />
         </div>
 
         <div className="case-study__icons">
