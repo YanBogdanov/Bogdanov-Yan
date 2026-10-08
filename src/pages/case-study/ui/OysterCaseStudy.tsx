@@ -2,6 +2,7 @@ import { NavLink } from 'react-router-dom'
 
 import { useTranslation } from 'react-i18next'
 
+import { reachGoal } from '@shared/lib/analytics/analytics'
 import { withBase } from '@shared/lib/browser/asset-url'
 
 import { CaseStudyImage } from './CaseStudyImage'
@@ -51,7 +52,13 @@ export function OysterCaseStudy() {
       </div>
 
       <div className="case-study__next">
-        <NavLink className="case-study__next-link" to="/works/rennu">
+        <NavLink
+          className="case-study__next-link"
+          to="/works/rennu"
+          onClick={() => {
+            reachGoal('next_case_click')
+          }}
+        >
           {t('common.nextCase')}
         </NavLink>
       </div>

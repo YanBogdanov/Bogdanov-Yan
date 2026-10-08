@@ -2,6 +2,7 @@ import { NavLink } from 'react-router-dom'
 
 import { useTranslation } from 'react-i18next'
 
+import { reachGoal } from '@shared/lib/analytics/analytics'
 import { withBase } from '@shared/lib/browser/asset-url'
 
 import { CaseStudyImage } from './CaseStudyImage'
@@ -32,6 +33,9 @@ export function EcolosCaseStudy() {
               href="https://los-kos.ru"
               rel="noopener noreferrer"
               target="_blank"
+              onClick={() => {
+                reachGoal('case_site_visit')
+              }}
             >
               {t('common.website')}
             </a>
@@ -156,7 +160,13 @@ export function EcolosCaseStudy() {
       </div>
 
       <div className="case-study__next">
-        <NavLink className="case-study__next-link" to="/works/oyster">
+        <NavLink
+          className="case-study__next-link"
+          to="/works/oyster"
+          onClick={() => {
+            reachGoal('next_case_click')
+          }}
+        >
           {t('common.nextCase')}
         </NavLink>
       </div>

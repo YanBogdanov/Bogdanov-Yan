@@ -1,13 +1,7 @@
 import { useEffect, useRef } from 'react'
 import { useLocation } from 'react-router-dom'
 
-const YANDEX_METRIKA_COUNTER_ID = 113560407
-
-declare global {
-  interface Window {
-    ym?: (counterId: number, action: string, ...args: unknown[]) => void
-  }
-}
+import { trackPageView } from '@shared/lib/analytics/analytics'
 
 export function YandexMetrikaTracker() {
   const location = useLocation()
@@ -19,7 +13,7 @@ export function YandexMetrikaTracker() {
       return
     }
 
-    window.ym?.(YANDEX_METRIKA_COUNTER_ID, 'hit', location.pathname + location.search)
+    trackPageView(location.pathname + location.search)
   }, [location.pathname, location.search])
 
   return null

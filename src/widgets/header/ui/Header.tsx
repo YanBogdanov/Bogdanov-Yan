@@ -10,6 +10,7 @@ import {
 } from '@content/site/contacts'
 import { navigationRoutes } from '@content/site/navigation'
 import { useLocale } from '@shared/hooks'
+import { reachGoal } from '@shared/lib/analytics/analytics'
 
 import './Header.sass'
 
@@ -244,6 +245,9 @@ export function Header() {
                       href={link.href}
                       rel="noreferrer"
                       target="_blank"
+                      onClick={() => {
+                        reachGoal(link.goal)
+                      }}
                     >
                       {link.label}
                     </a>
@@ -251,7 +255,13 @@ export function Header() {
                 </div>
 
                 <div className="header__contact-column">
-                  <a className="header__contact-link" href={`mailto:${contactEmail}`}>
+                  <a
+                    className="header__contact-link"
+                    href={`mailto:${contactEmail}`}
+                    onClick={() => {
+                      reachGoal('contact_email')
+                    }}
+                  >
                     {contactEmail}
                   </a>
                 </div>
@@ -384,11 +394,20 @@ export function Header() {
                 href={link.href}
                 rel="noreferrer"
                 target="_blank"
+                onClick={() => {
+                  reachGoal(link.goal)
+                }}
               >
                 {link.label}
               </a>
             ))}
-            <a className="header__mobile-contact-link" href={`mailto:${contactEmail}`}>
+            <a
+              className="header__mobile-contact-link"
+              href={`mailto:${contactEmail}`}
+              onClick={() => {
+                reachGoal('contact_email')
+              }}
+            >
               {contactEmail}
             </a>
           </div>

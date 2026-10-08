@@ -3,6 +3,7 @@ import { useEffect, useRef, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 
 import { useLocale } from '@shared/hooks'
+import { reachGoal } from '@shared/lib/analytics/analytics'
 import { withBase } from '@shared/lib/browser/asset-url'
 import { Footer } from '@widgets/footer'
 
@@ -320,7 +321,14 @@ export function AboutPage() {
 
           <div className="about-page__skill-group">
             <p className="about-page__row-label">{t('skills.cv.label')}</p>
-            <a className="about-page__link" download href={cvHref}>
+            <a
+              className="about-page__link"
+              download
+              href={cvHref}
+              onClick={() => {
+                reachGoal('cv_download')
+              }}
+            >
               {t('skills.cv.download')}
             </a>
           </div>
